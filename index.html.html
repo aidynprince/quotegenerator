@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quote Generator</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-color: azure;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                background-color: whitesmoke;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            button {
+                margin-top: 1rem;
+                padding: 10px 20px;
+                background-color: blue;
+                border-radius: 5px;
+                border: none;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: darkslateblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quote Generator</h1>
+            <p id="quote">click button</p>
+            <button onclick="generateQuote()">Generate Quote</button>
+            <script></script>
+        </div>
+    </body>
+    <script>
+        const quotes = [
+            "The best way to get started is to quit talking and begin doing. – Walt Disney",
+            "Don’t let yesterday take up too much of today. – Will Rogers",
+            "It’s not whether you get knocked down, it’s whether you get up. – Vince Lombardi",
+            "If you are working on something exciting, it will keep you motivated. – Steve Jobs",
+            "Success is not in what you have, but who you are. – Bo Bennett",
+            "The harder you work for something, the greater you’ll feel when you achieve it.",
+            "Dream bigger. Do bigger.",
+            "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+            "Great things never come from comfort zones.",
+            "Push yourself, because no one else is going to do it for you.",
+        ];
+
+        function generateQuote() {
+            try {
+                if (!Array.isArray(quotes) || quotes.length === 0) {
+                    throw new Error("No quotes available");
+                }
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const quoteElement = document.getElementById("quote");
+                quoteElement.textContent = quotes[randomIndex];
+            } catch (error) {
+                console.error("Error generating quote:", error);
+                const quoteElement = document.getElementById("quote");
+                quoteElement.textContent =
+                    "An error occurred while generating the quote.";
+            }
+        }
+    </script>
+</html>
